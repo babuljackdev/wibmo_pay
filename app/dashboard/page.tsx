@@ -17,7 +17,8 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-
+import Link from 'next/link'
+import Nav from '../components/navbar'
 export default function PaymentGatewayDashboard() {
   return (
     <div className="flex h-screen bg-gray-100">
@@ -27,15 +28,7 @@ export default function PaymentGatewayDashboard() {
           <CreditCard className="h-8 w-8 text-blue-600 mr-2" />
           <span className="text-2xl font-bold">Wibmo Pay</span>
         </div>
-        <nav>
-          <ul className="space-y-2">
-            <li><a href="#" className="block py-2 px-4 text-blue-600 bg-blue-100 rounded">Dashboard</a></li>
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Transactions</a></li>
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Wallets</a></li>
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Security</a></li>
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Reports</a></li>
-          </ul>
-        </nav>
+        <Nav />
       </aside>
 
       {/* Main Content */}
