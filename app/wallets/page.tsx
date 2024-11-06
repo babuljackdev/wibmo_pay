@@ -16,6 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import Nav from '../components/navbar'
 
 const recentTransactions = [
   { id: 'TX123456', amount: 100.00, type: 'Payment', date: '2024-03-05', description: 'Fuel Purchase' },
@@ -34,15 +35,7 @@ export default function WalletPage() {
           <CreditCard className="h-8 w-8 text-blue-600 mr-2" />
           <span className="text-2xl font-bold">Wibmo Pay</span>
         </div>
-        <nav>
-          <ul className="space-y-2">
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Dashboard</a></li>
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Transactions</a></li>
-            <li><a href="#" className="block py-2 px-4 text-blue-600 bg-blue-100 rounded">Wallet</a></li>
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Security</a></li>
-            <li><a href="#" className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Reports</a></li>
-          </ul>
-        </nav>
+        <Nav />
       </aside>
 
       {/* Main Content */}

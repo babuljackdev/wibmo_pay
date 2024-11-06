@@ -28,12 +28,12 @@ export default function Nav() {
                     </Link>
                 </li>
                 <li>
-                    <Link href="#" onClick={() => handleLinkClick('/wallets')} className={`block py-2 px-4 rounded ${activeLink === '/wallets' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
+                    <Link href="/wallets" onClick={() => handleLinkClick('/wallets')} className={`block py-2 px-4 rounded ${activeLink === '/wallets' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
                         Wallets
                     </Link>
                 </li>
                 <li>
-                    <Link href="#" onClick={() => handleLinkClick('/security')} className={`block py-2 px-4 rounded ${activeLink === '/security' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
+                    <Link href="/security" onClick={() => handleLinkClick('/security')} className={`block py-2 px-4 rounded ${activeLink === '/security' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
                         Security
                     </Link>
                 </li>
