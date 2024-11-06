@@ -8,8 +8,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
+  const router = useRouter()
   const [showPassword, setShowPassword] = React.useState(false)
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword)
@@ -63,7 +65,7 @@ export default function LoginPage() {
               Forgot password?
             </Link>
           </div>
-          <Button className="w-full">Log In</Button>
+          <Button onClick={()=> router.push('/dashboard')} className="w-full">Log In</Button>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <div className="relative w-full">
