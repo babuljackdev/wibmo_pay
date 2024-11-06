@@ -1,4 +1,6 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import { Bell, ChevronRight, CreditCard, DollarSign, PlusCircle, Search, Wallet } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -27,6 +29,17 @@ const recentTransactions = [
 ]
 
 export default function WalletPage() {
+  const [balance, setBalance] = useState(1234.56)
+  const [enteredAmount, setEnteredAmount] = useState(0)
+  function handleAddFunds(): void {
+    setBalance(balance + enteredAmount)
+  }
+
+  function handleWithdraw(): void {
+    setBalance(balance - enteredAmount)
+
+  }
+
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
@@ -65,7 +78,7 @@ export default function WalletPage() {
               <Wallet className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$1,234.56</div>
+              <div className="text-2xl font-bold">${balance}</div>
               <p className="text-xs text-muted-foreground">
                 +20.1% from last month
               </p>
@@ -122,15 +135,24 @@ export default function WalletPage() {
                     <Button variant="outline">$200</Button>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Input type="number" placeholder="Enter amount" />
-                    <Button>Add Funds</Button>
+                    <Input
+                      onChange={(e) => setEnteredAmount(Number(e.target.value))}
+                      type="number" placeholder="Enter amount" />
+                    <Button
+                      onClick={handleAddFunds}
+                    >Add Funds</Button>
                   </div>
                 </div>
               </TabsContent>
               <TabsContent value="withdraw">
                 <div className="space-y-4">
-                  <Input type="number" placeholder="Enter amount to withdraw" />
-                  <Button>Withdraw to Bank Account</Button>
+                  <Input type="number"
+                    onChange={(e) => setEnteredAmount(Number(e.target.value))}
+                    placeholder="Enter amount to withdraw" />
+                  
+                  <Button
+                  onClick={handleWithdraw}
+                  >Withdraw to Bank Account</Button>
                 </div>
               </TabsContent>
             </Tabs>
@@ -163,7 +185,7 @@ export default function WalletPage() {
                       <Badge
                         variant={
                           transaction.type === 'Payment' ? 'default' :
-                          transaction.type === 'Top-up' ? 'success' : 'secondary'
+                            transaction.type === 'Top-up' ? 'success' : 'secondary'
                         }
                       >
                         {transaction.type}
