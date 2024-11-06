@@ -38,7 +38,7 @@ export default function Nav() {
                     </Link>
                 </li>
                 <li>
-                    <Link href="#" onClick={() => handleLinkClick('/reports')} className={`block py-2 px-4 rounded ${activeLink === '/reports' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
+                    <Link href="/reports" onClick={() => handleLinkClick('/reports')} className={`block py-2 px-4 rounded ${activeLink === '/reports' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
                         Reports
                     </Link>
                 </li>
