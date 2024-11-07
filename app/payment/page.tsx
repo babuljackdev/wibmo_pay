@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BarChart, Bell, CreditCard, Smartphone, TrendingUp, Wallet, X } from 'lucide-react'
 import { QRCodeSVG as QRCode } from 'qrcode.react'
 
@@ -23,9 +23,31 @@ import Nav from '../components/navbar'
 
 export default function WalletPage() {
   const [paymentType, setPaymentType] = useState<string>('send')
-  const [amount, setAmount] = useState('')
+  const [amount, setAmount] = useState('0')
   const [showQRCode, setShowQRCode] = useState(false)
   const [nfcScanning, setNfcScanning] = useState(false)
+
+
+  const [balance, setBalance] = useState(0.0)
+  function handleReceive(): void {
+    localStorage.setItem('balance', String(balance + parseFloat(amount)))
+    setBalance(balance + parseFloat(amount))
+  }
+
+  function handleSend(): void {
+    localStorage.setItem('balance', String(balance - parseFloat(amount)))
+    setBalance(balance - parseFloat(amount))
+
+  }
+
+  useEffect(() => {
+    const balance = localStorage.getItem('balance')
+    if (balance) {
+      setBalance(parseFloat(balance))
+    } else {
+      localStorage.setItem('balance', '0')
+    }
+  }, [])
 
   const generateQRCode = () => {
     if (amount) {
@@ -38,6 +60,12 @@ export default function WalletPage() {
     setTimeout(() => {
       setNfcScanning(false)
       alert('NFC scanning completed. Payment processed.')
+
+      if(paymentType === 'send') {
+        handleSend()
+      } else {
+        handleReceive()
+      }
     }, 5000)
   }
 
@@ -73,7 +101,7 @@ export default function WalletPage() {
               <Wallet className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$1,234.56</div>
+              <div className="text-2xl font-bold">${balance}</div>
               <p className="text-xs text-muted-foreground">+20.1% from last month</p>
             </CardContent>
           </Card>
