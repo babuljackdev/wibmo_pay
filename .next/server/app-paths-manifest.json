@@ -5,7 +5,5 @@
   "/dashboard/page": "app/dashboard/page.js",
   "/transactions/page": "app/transactions/page.js",
   "/wallets/page": "app/wallets/page.js",
-  "/payment/page": "app/payment/page.js",
-  "/security/page": "app/security/page.js",
-  "/reports/page": "app/reports/page.js"
+  "/security/page": "app/security/page.js"
 }
