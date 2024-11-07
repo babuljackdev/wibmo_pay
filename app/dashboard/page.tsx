@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bell, CreditCard, Lock, Search, Shield, User } from 'lucide-react'
+import { Bell, CreditCard, Shield,} from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
-import { Separator } from '@/components/ui/separator'
+//import { Separator } from '@/components/ui/separator'
 import {
   Table,
   TableBody,
@@ -17,7 +17,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import Link from 'next/link'
+//import Link from 'next/link'
 import Nav from '../components/navbar'
 export default function PaymentGatewayDashboard() {
   return (

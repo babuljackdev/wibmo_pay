@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bell, ChevronRight, CreditCard, Lock, Search, Shield, Smartphone, User } from 'lucide-react'
+import { Bell, ChevronRight, CreditCard, Shield, Smartphone, User } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'

@@ -1,34 +1,25 @@
 'use client'
 
 import React, { useState } from 'react'
-import { BarChart, Bell, CreditCard, Download, FileText, PieChart, QrCode, Search, Smartphone, TrendingUp, Wallet, X } from 'lucide-react'
+import { BarChart, Bell, CreditCard, Smartphone, TrendingUp, Wallet, X } from 'lucide-react'
 import { QRCodeSVG as QRCode } from 'qrcode.react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+
 import Nav from '../components/navbar'
 
-const recentTransactions = [
+/* const recentTransactions = [
   { id: 'TX123456', amount: 100.00, type: 'Payment', date: '2024-03-05', description: 'Fuel Purchase' },
   { id: 'TX123457', amount: 500.00, type: 'Top-up', date: '2024-03-04', description: 'Wallet Recharge' },
   { id: 'TX123458', amount: 75.50, type: 'Payment', date: '2024-03-03', description: 'Fuel Purchase' },
   { id: 'TX123459', amount: 200.00, type: 'Withdrawal', date: '2024-03-02', description: 'Bank Transfer' },
   { id: 'TX123460', amount: 50.00, type: 'Payment', date: '2024-03-01', description: 'Fuel Purchase' },
-]
+] */
 
 export default function WalletPage() {
   const [paymentType, setPaymentType] = useState<string>('send')

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import { Bell, ChevronRight, CreditCard, DollarSign, PlusCircle, Search, Wallet } from 'lucide-react'
+import { Bell, ChevronRight, CreditCard, DollarSign, Wallet } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'

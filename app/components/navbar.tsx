@@ -33,8 +33,8 @@ export default function Nav() {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/wallets2" onClick={() => handleLinkClick('/wallets2')} className={`block py-2 px-4 rounded ${activeLink === '/wallets2' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
-                        Wallets2
+                    <Link href="/payment" onClick={() => handleLinkClick('/payment')} className={`block py-2 px-4 rounded ${activeLink === '/payment' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
+                        Payment
                     </Link>
                 </li>
                 <li>

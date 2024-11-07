@@ -1,5 +1,5 @@
 import React from 'react'
-import { BarChart, Bell, CreditCard, Download, FileText, PieChart, Search, TrendingUp } from 'lucide-react'
+import { BarChart, Bell, CreditCard, Download, FileText, PieChart,TrendingUp } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
