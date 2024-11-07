@@ -30,11 +30,13 @@ export default function WalletPage() {
 
   const [balance, setBalance] = useState(0.0)
   function handleReceive(): void {
+    if(isNaN(parseFloat(amount))) return
     localStorage.setItem('balance', String(balance + parseFloat(amount)))
     setBalance(balance + parseFloat(amount))
   }
 
   function handleSend(): void {
+    if(isNaN(parseFloat(amount))) return
     localStorage.setItem('balance', String(balance - parseFloat(amount)))
     setBalance(balance - parseFloat(amount))
 
