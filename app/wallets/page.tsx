@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { Bell, ChevronRight, CreditCard, DollarSign, Wallet } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -29,16 +29,27 @@ const recentTransactions = [
 ]
 
 export default function WalletPage() {
-  const [balance, setBalance] = useState(1234.56)
+  const [balance, setBalance] = useState(0.0)
   const [enteredAmount, setEnteredAmount] = useState(0)
   function handleAddFunds(): void {
+    localStorage.setItem('balance', String(balance + enteredAmount))
     setBalance(balance + enteredAmount)
   }
 
   function handleWithdraw(): void {
+    localStorage.setItem('balance', String(balance - enteredAmount))
     setBalance(balance - enteredAmount)
 
   }
+
+  useEffect(() => {
+    const balance = localStorage.getItem('balance')
+    if (balance) {
+      setBalance(parseFloat(balance))
+    } else {
+      localStorage.setItem('balance', '0')
+    }
+  }, [])
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -130,13 +141,14 @@ export default function WalletPage() {
               <TabsContent value="add-funds">
                 <div className="space-y-4">
                   <div className="grid grid-cols-3 gap-4">
-                    <Button variant="outline">$50</Button>
-                    <Button variant="outline">$100</Button>
-                    <Button variant="outline">$200</Button>
+                    <Button onClick={()=> setEnteredAmount(50)} variant="outline">$50</Button>
+                    <Button onClick={()=> setEnteredAmount(100)} variant="outline">$100</Button>
+                    <Button onClick={()=> setEnteredAmount(200)} variant="outline">$200</Button>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Input
                       onChange={(e) => setEnteredAmount(Number(e.target.value))}
+                      value={enteredAmount}
                       type="number" placeholder="Enter amount" />
                     <Button
                       onClick={handleAddFunds}
@@ -149,9 +161,9 @@ export default function WalletPage() {
                   <Input type="number"
                     onChange={(e) => setEnteredAmount(Number(e.target.value))}
                     placeholder="Enter amount to withdraw" />
-                  
+
                   <Button
-                  onClick={handleWithdraw}
+                    onClick={handleWithdraw}
                   >Withdraw to Bank Account</Button>
                 </div>
               </TabsContent>
