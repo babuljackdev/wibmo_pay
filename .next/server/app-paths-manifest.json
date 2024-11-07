@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/login/page": "app/login/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/page": "app/page.js",
+  "/payment/page": "app/payment/page.js",
+  "/reports/page": "app/reports/page.js",
+  "/security/page": "app/security/page.js",
+  "/transactions/page": "app/transactions/page.js",
+  "/wallets/page": "app/wallets/page.js"
+}
