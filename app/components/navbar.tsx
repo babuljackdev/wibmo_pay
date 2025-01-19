@@ -1,53 +1,77 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import {
+  LayoutDashboard,
+  WalletCards,
+  Receipt,
+  Shield,
+  FileBarChart,
+  CreditCard,
+  Bell,
+  Settings,
+  LogOut
+} from 'lucide-react';
+
+const navItems = [
+  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { name: 'Transactions', href: '/transactions', icon: Receipt },
+  { name: 'Wallets', href: '/wallets', icon: WalletCards },
+  { name: 'Payments', href: '/payment', icon: CreditCard },
+  { name: 'Security', href: '/security', icon: Shield },
+  { name: 'Reports', href: '/reports', icon: FileBarChart },
+];
 
 export default function Nav() {
-    const [activeLink, setActiveLink] = useState('');
+  const pathname = usePathname();
 
-    useEffect(() => {
-        setActiveLink(window.location.pathname);
-    }, []);
+  return (
+    <nav className="space-y-6">
+      <div className="space-y-1">
+        {navItems.map((item) => {
+          const isActive = pathname === item.href;
+          const Icon = item.icon;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200 ease-in-out hover:bg-gray-100 group ${
+                isActive
+                  ? 'bg-primary/10 text-primary hover:bg-primary/20'
+                  : 'text-gray-600 hover:text-primary'
+              }`}
+            >
+              <Icon className={`h-5 w-5 transition-transform group-hover:scale-110 ${
+                isActive ? 'text-primary' : 'text-gray-400 group-hover:text-primary'
+              }`} />
+              <span className="font-medium">{item.name}</span>
+              {isActive && (
+                <div className="absolute left-0 w-1 h-8 bg-primary rounded-r-full transform -translate-y-1/2 top-1/2" />
+              )}
+            </Link>
+          );
+        })}
+      </div>
 
-    const handleLinkClick = (path: string) => {
-        setActiveLink(path);
-    };
-
-    return (
-        <nav>
-            <ul className="space-y-2">
-                <li>
-                    <Link href="/dashboard" onClick={() => handleLinkClick('/wibmo_pay/dashboard')} className={`block py-2 px-4 rounded ${activeLink === '/wibmo_pay/dashboard' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
-                        Dashboard
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/transactions" onClick={() => handleLinkClick('/wibmo_pay/transactions')} className={`block py-2 px-4 rounded ${activeLink === '/wibmo_pay/transactions' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
-                        Transactions
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/wallets" onClick={() => handleLinkClick('/wibmo_pay/wallets')} className={`block py-2 px-4 rounded ${activeLink === '/wibmo_pay/wallets' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
-                        Wallets
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/payment" onClick={() => handleLinkClick('/wibmo_pay/payment')} className={`block py-2 px-4 rounded ${activeLink === '/wibmo_pay/payment' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
-                        Payment
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/security" onClick={() => handleLinkClick('/wibmo_pay/security')} className={`block py-2 px-4 rounded ${activeLink === '/wibmo_pay/security' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
-                        Security
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/reports" onClick={() => handleLinkClick('/wibmo_pay/reports')} className={`block py-2 px-4 rounded ${activeLink === '/wibmo_pay/reports' ? 'text-blue-600 bg-blue-100' : 'text-gray-700 hover:bg-gray-100'}`}>
-                        Reports
-                    </Link>
-                </li>
-            </ul>
-        </nav>
-    );
+      <div className="pt-4 border-t border-gray-200">
+        <div className="space-y-1">
+          <Link
+            href="/settings"
+            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-primary transition-all duration-200 group"
+          >
+            <Settings className="h-5 w-5 text-gray-400 group-hover:text-primary transition-transform group-hover:scale-110" />
+            <span className="font-medium">Settings</span>
+          </Link>
+          <Link
+            href="/"
+            className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 group"
+          >
+            <LogOut className="h-5 w-5 text-gray-400 group-hover:text-red-600 transition-transform group-hover:scale-110" />
+            <span className="font-medium">Logout</span>
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
 }
